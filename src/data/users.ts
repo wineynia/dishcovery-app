@@ -4,20 +4,20 @@ type UserAccount = User & { password: string };
 
 const accounts: UserAccount[] = [
   {
-    username: "gabriella",
-    password: "cook123",
+    username: "Idun",
+    password: "letscook123",
     favouriteCategory: "Dessert",
     savedRecipes: [],
   },
   {
-    username: "sam",
-    password: "seafood456",
+    username: "Balder",
+    password: "letseat456",
     favouriteCategory: "Seafood",
     savedRecipes: [],
   },
   {
-    username: "alex",
-    password: "pasta789",
+    username: "Freja",
+    password: "letsbake789",
     favouriteCategory: null,
     savedRecipes: [],
   },

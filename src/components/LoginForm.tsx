@@ -60,8 +60,8 @@ export function LoginForm() {
         <p className="hint">Demo accounts</p>
         <ul className="demo-list">
           <li>Idun / letscook123</li>
-          <li>Balder / letsbake456</li>
-          <li>Freja / letseat789</li>
+          <li>Balder / letseat456</li>
+          <li>Freja / letsbake789</li>
         </ul>
       </div>
     </form>
