@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { UserProvider } from "@/context/UserContext";
-import { LogInWrapper } from "@/components/LogInWrappers";
+import { LogInWrapper } from "@/components/LogInWrapper";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
