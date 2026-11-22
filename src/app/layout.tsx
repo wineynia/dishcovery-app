@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { UserProvider } from "@/context/UserContext";
 import { LogInWrapper } from "@/components/LogInWrappers";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Dishcovery",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <UserProvider>
           <LogInWrapper>{children}</LogInWrapper>
+          <Footer />
         </UserProvider>
       </body>
     </html>
