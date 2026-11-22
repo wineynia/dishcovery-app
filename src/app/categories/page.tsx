@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { FavouriteButton } from "@/app/components/FavouriteButton";
-import { fetchCategories } from "@/app/lib/mealdb";
-import { useAsync } from "@/app/lib/useAsync";
+import { FavouriteButton } from "@/components/FavouriteButton";
+import { fetchCategories } from "@/lib/mealdb";
+import { useAsync } from "@/lib/useAsync";
 
 export default function CategoriesPage() {
   const categories = useAsync(fetchCategories, []);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useUserContext } from "@/app/context/UserContext";
+import { useUserContext } from "@/context/UserContext";
 
 type FavouriteButtonProps = {
   category: string;

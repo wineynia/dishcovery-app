@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { UserProvider } from "@/app/context/UserContext";
-import { LogInWrapper } from "@/app/components/LogInWrappers";
+import { UserProvider } from "@/context/UserContext";
+import { LogInWrapper } from "@/components/LogInWrappers";
 
 export const metadata: Metadata = {
   title: "Dishcovery",
