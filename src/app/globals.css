@@ -3,19 +3,232 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #cadf9e;
+  --surface: #a4ac96;
+  --ink: #313628;
+  --muted: #595358;
+  --primary: #595358;
+  --primary-ink: #cadf9e;
+  --border: #857f74;
+  --error: #8b2e2e;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --bg: #313628;
+    --surface: #595358;
+    --ink: #cadf9e;
+    --muted: #a4ac96;
+    --primary: #cadf9e;
+    --primary-ink: #313628;
+    --border: #857f74;
+    --error: #f0b4b4;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #313628;
+  --surface: #595358;
+  --ink: #cadf9e;
+  --muted: #a4ac96;
+  --primary: #cadf9e;
+  --primary-ink: #313628;
+  --border: #857f74;
+  --error: #f0b4b4;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-ink leading-normal;
+  }
+
+  h1 {
+    @apply mb-2 text-[clamp(1.6rem,4vw,2.2rem)] font-bold leading-tight;
+  }
+
+  h2 {
+    @apply mb-2 text-xl font-bold leading-tight;
+  }
+
+  h3 {
+    @apply mb-2 text-lg font-bold leading-tight;
+  }
+
+  a {
+    @apply text-primary;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+
+  .site-header {
+    @apply flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-border bg-surface px-4 py-4;
+  }
+
+  .brand {
+    @apply text-[1.15rem] font-bold text-ink no-underline;
+  }
+
+  .nav-list {
+    @apply m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0;
+  }
+
+  .nav-list a {
+    @apply rounded-full px-2 py-1 text-ink no-underline;
+  }
+
+  .nav-list a[aria-current="page"] {
+    @apply bg-primary text-primary-ink;
+  }
+
+  .header-user {
+    @apply flex items-center gap-3 text-muted;
+  }
+
+  /* Layout */
+  .page {
+    @apply mx-auto max-w-[1100px] px-4 py-6;
+  }
+
+  .stack > * + * {
+    @apply mt-4;
+  }
+
+  .muted {
+    @apply text-muted;
+  }
+
+  .error {
+    @apply text-error;
+  }
+
+  .login-screen {
+    @apply mx-auto grid max-w-[960px] grid-cols-1 gap-6 px-4 py-8;
+  }
+
+  @media (min-width: 800px) {
+    .login-screen {
+      @apply grid-cols-2 items-stretch pt-16;
+    }
+  }
+
+  .login-card,
+  .login-teaser,
+  .card,
+  .recipe-image {
+    @apply rounded-xl border border-border bg-surface;
+  }
+
+  .login-card,
+  .login-teaser {
+    @apply p-6;
+  }
+
+  .login-teaser {
+    @apply flex flex-col gap-4;
+  }
+
+  .login-teaser .card {
+    @apply flex-1;
+  }
+
+  /* Forms */
+  .form {
+    @apply grid gap-4;
+  }
+
+  .field {
+    @apply grid gap-1.5;
+  }
+
+  .field input {
+    @apply rounded-lg border border-border bg-bg px-3 py-2.5 text-ink;
+  }
+
+  .hint {
+    @apply m-0 text-[0.85rem] text-muted;
+  }
+
+  .demo-accounts {
+    @apply grid gap-1.5;
+  }
+
+  .demo-list {
+    @apply m-0 flex list-none flex-wrap gap-2 p-0;
+  }
+
+  .demo-list li {
+    @apply whitespace-nowrap rounded-full border border-border px-3 py-1 text-[0.85rem] text-ink;
+  }
+
+  /* Buttons */
+  button,
+  .button-primary,
+  .button-secondary {
+    @apply inline-block cursor-pointer rounded-full border border-primary px-4 py-2 no-underline;
+  }
+
+  .button-primary,
+  button[type="submit"] {
+    @apply bg-primary text-primary-ink;
+  }
+
+  .button-secondary {
+    @apply bg-transparent text-primary;
+  }
+
+  /* Cards and grids */
+  .card-grid {
+    @apply m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4 p-0;
+  }
+
+  .card {
+    @apply flex h-full flex-col overflow-hidden;
+  }
+
+  .card-link {
+    @apply block text-ink no-underline;
+  }
+
+  .card-image {
+    @apply aspect-[4/3] w-full object-cover;
+  }
+
+  .card-body {
+    @apply px-4 py-3;
+  }
+
+  .card-body h3 {
+    @apply text-[1.05rem];
+  }
+
+  .card-body p {
+    @apply m-0 text-sm;
+  }
+
+  .card-actions {
+    @apply mt-auto px-4 pb-4;
+  }
+
+  /* Recipe page */
+  .recipe-image {
+    @apply aspect-square w-full max-w-[480px] object-cover;
+  }
+
+  .ingredients {
+    @apply m-0 grid list-none grid-cols-1 gap-1.5 p-0;
+  }
+
+  @media (min-width: 600px) {
+    .ingredients {
+      @apply grid-cols-2;
+    }
+  }
+
+  .ingredients li {
+    @apply flex justify-between gap-4 border-b border-dashed border-border px-3 py-1.5;
+  }
+
+  .links {
+    @apply flex flex-wrap gap-4;
+  }
 }
